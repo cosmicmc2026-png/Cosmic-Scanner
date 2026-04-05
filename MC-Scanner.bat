@@ -20,7 +20,7 @@ echo   [OK] Privilegi admin attivi
 echo   [OK] Download scanner in corso...
 echo.
 
-set SCRIPT_URL=https://cosmicmc2026-png.github.io/Cosmic-Scanner/scanner.ps1
+set SCRIPT_URL=https://scanner.cosmicmc.de/scanner.ps1
 set SCRIPT_PATH=%TEMP%\mc-scan-%RANDOM%.ps1
 
 :: Scarica lo script
