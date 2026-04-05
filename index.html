@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Anti-Cheat Scanner - Download</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(0, 150, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 100, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(0, 255, 150, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Logo / Title */
+        .logo {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00b4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 50px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(0, 180, 255, 0.15);
+            border: 1px solid rgba(0, 180, 255, 0.3);
+            color: #00b4ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 40px;
+        }
+
+        /* Feature cards */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 24px 16px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 180, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .feature-desc {
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.4;
+        }
+
+        /* Download button */
+        .download-section {
+            margin: 50px 0;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #00b4ff, #0088cc);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 18px 48px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 180, 255, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 180, 255, 0.5);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .download-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .download-info {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* How to use */
+        .howto {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 50px 0;
+            text-align: left;
+        }
+
+        .howto h2 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #00b4ff, #0088cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        .step-text {
+            padding-top: 4px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+        .step-text strong {
+            color: #fff;
+        }
+
+        .step-text code {
+            background: rgba(0, 180, 255, 0.1);
+            color: #00b4ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* Modules list */
+        .modules {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 50px 0;
+        }
+
+        .modules h2 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+            text-align: left;
+        }
+
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #aaa;
+            padding: 6px 0;
+        }
+
+        .module-dot {
+            width: 6px;
+            height: 6px;
+            background: #00ff88;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.8rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="logo">MC Scanner</div>
+        <div class="subtitle">Anti-Cheat Screenshare Tool per Minecraft</div>
+        <div class="version-badge">v2.5 - Full Edition</div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">&#128269;</div>
+                <div class="feature-title">15 Moduli di Scansione</div>
+                <div class="feature-desc">Controlla mods, file nascosti, cronologia, processi, cestino e molto altro</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127760;</div>
+                <div class="feature-title">Tutti i Browser</div>
+                <div class="feature-desc">Chrome, Firefox, Edge, Opera, Opera GX, Brave, Vivaldi, Tor e altri 10+</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128172;</div>
+                <div class="feature-title">Report su Discord</div>
+                <div class="feature-desc">Invia automaticamente il risultato completo sul tuo canale staff</div>
+            </div>
+        </div>
+
+        <!-- Download -->
+        <div class="download-section">
+            <a href="MC-Scanner.bat" download class="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Scarica MC Scanner
+            </a>
+            <div class="download-info">
+                Windows - Nessuna installazione richiesta - ~2KB
+            </div>
+        </div>
+
+        <!-- How to use -->
+        <div class="howto">
+            <h2>Come si usa</h2>
+
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-text">Connettiti al PC del giocatore con <strong>AnyDesk</strong></div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-text">Apri questa pagina nel browser del giocatore e clicca <strong>Scarica</strong></div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-text">Fai <strong>doppio click</strong> sul file <code>MC-Scanner.bat</code> scaricato. Si apre come Admin automaticamente</div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-text">Aspetta che la scansione finisca. Il <strong>report arriva su Discord</strong> automaticamente</div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">5</div>
+                <div class="step-text">Lo script si cancella da solo alla fine. <strong>Nessuna traccia</strong> rimane sul PC</div>
+            </div>
+        </div>
+
+        <!-- Modules -->
+        <div class="modules">
+            <h2>Cosa controlla</h2>
+            <div class="module-grid">
+                <div class="module-item"><div class="module-dot"></div>Directory Minecraft</div>
+                <div class="module-item"><div class="module-dot"></div>File Nascosti</div>
+                <div class="module-item"><div class="module-dot"></div>Temp / AppData</div>
+                <div class="module-item"><div class="module-dot"></div>Processi Attivi</div>
+                <div class="module-item"><div class="module-dot"></div>Cronologia Browser</div>
+                <div class="module-item"><div class="module-dot"></div>Downloads + Zone ID</div>
+                <div class="module-item"><div class="module-dot"></div>DNS Cache</div>
+                <div class="module-item"><div class="module-dot"></div>Prefetch Windows</div>
+                <div class="module-item"><div class="module-dot"></div>Cestino</div>
+                <div class="module-item"><div class="module-dot"></div>File Recenti + ADS</div>
+                <div class="module-item"><div class="module-dot"></div>Programmi Installati</div>
+                <div class="module-item"><div class="module-dot"></div>Avvio Automatico</div>
+                <div class="module-item"><div class="module-dot"></div>Task Pianificati</div>
+                <div class="module-item"><div class="module-dot"></div>File Hosts</div>
+                <div class="module-item"><div class="module-dot"></div>Cartelle Utente</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            MC Anti-Cheat Scanner v2.5 - Screenshare Tool
+        </div>
+
+    </div>
+</body>
+</html>
